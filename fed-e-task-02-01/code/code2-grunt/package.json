@@ -1,13 +1,11 @@
 {
-  "name": "pages-boilerplate",
+  "name": "grunt-demo-xinxin",
   "version": "0.1.0",
   "private": true,
   "description": "Always a pleasure scaffolding your awesome static sites.",
   "keywords": [
-    "pages-boilerplate",
-    "boilerplate",
-    "pages",
-    "zce"
+    "grunt",
+    "demo"
   ],
   "homepage": "https://github.com/zce/pages-boilerplate#readme",
   "bugs": {
@@ -19,17 +17,12 @@
   },
   "license": "MIT",
   "author": {
-    "name": "zce",
-    "email": "w@zce.me",
-    "url": "https://zce.me"
+    "name": "xinxin"
   },
   "scripts": {
-    "clean": "gulp clean",
-    "lint": "gulp lint",
-    "serve": "gulp serve",
-    "build": "gulp build",
-    "start": "gulp start",
-    "deploy": "gulp deploy --production"
+    "clean": "grunt clean",
+    "lint": "grunt lint",
+    "build": "gulp build"
   },
   "browserslist": [
     "last 1 version",
@@ -42,7 +35,24 @@
     "jquery": "3.4.1",
     "popper.js": "1.16.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "grunt": "^1.3.0",
+    "grunt-babel": "^8.0.0",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-cptpl": "^0.1.3",
+    "grunt-sass": "^3.1.0",
+    "load-grunt-tasks": "^5.1.0",
+    "sass": "^1.26.10",
+    "time-grunt": "^2.0.0"
+  },
   "engines": {
     "node": ">=6"
   }

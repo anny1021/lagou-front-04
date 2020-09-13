@@ -1,0 +1,17 @@
+{
+  "name": "code1-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "cli.js",
+  "keywords": [
+    "custom cli",
+    "nodejs"
+  ],
+  "author": "xinxin",
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^3.1.5",
+    "inquirer": "^7.3.3"
+  }
+}

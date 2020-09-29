@@ -12,14 +12,22 @@
   - webpack-merge
 - vue 文件解析
   - vue-loader
+  - vue-style-loader
   - vue-template-compiler
+  - @vue/cli-plugin-babel/preset
+  - vue
+  - vue-router
+  - axios
 - js 语法解析
   - @babel/core
   - @babel/preset-env
   - babel-loader
+  - babel-plugin-import
 - 文件压缩
   - uglifyjs-webpack-plugin
 - css
+  - less
+  - less-loader
   - css-loader
   - style-loader
   - postcss-loader
@@ -30,6 +38,16 @@
   - file-loader
   - url-loader
   - image-webpack-loader
+  - responsive-loader
 - 其他
   - html-webpack-plugin
   - clean-webpack-plugin
+  - progress-bar-webpack-plugin
+  - webpack-api-mocker
+  - cross-env
+
+
+- eslint 相关
+  eslint 
+  eslint-config-standard
+  eslint-plugin-vue

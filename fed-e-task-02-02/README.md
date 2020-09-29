@@ -1,3 +1,8 @@
+### 笔记为两部分
+
+- [第一部分](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-02-02/notes/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+- [第二部分](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-02-02/notes/note.md)
+
 ### 简答题答案以及说明
 
 - 1、Webpack 的构建流程主要有哪些环节？如果可以请尽可能详尽的描述 Webpack 打包的整个过程。
@@ -42,4 +47,4 @@
       - 开发 plugin，为一个可实例化的构造类，内部使用 webpack 提供的 生命周期 api ,在对应生命周期内，做对应的事情
 
 ### 编程题
-  - 
+  - [编程题](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-02-02/code/vue-app-base/README.md)

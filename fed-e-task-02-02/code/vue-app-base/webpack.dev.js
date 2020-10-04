@@ -13,6 +13,7 @@ module.exports = merge(base, {
     contentBase: path.resolve(__dirname, 'src'),
     host: 'localhost',
     hot: true,
+    hotOnly: true,
     compress: true, //启用压缩
     noInfo: true,
     historyApiFallback: true,

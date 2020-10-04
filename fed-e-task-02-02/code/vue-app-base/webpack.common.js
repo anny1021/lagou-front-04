@@ -5,7 +5,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProd = env === 'production';
-
 module.exports = {
   entry: {
     index: path.resolve(__dirname, './src/main.js'),
@@ -72,7 +71,8 @@ module.exports = {
       } : {}
     }),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(env)
+      'process.env': JSON.stringify(env),
+      BASE_URL: path.resolve(__dirname, 'dist')
     }),
   ],
   resolve: {

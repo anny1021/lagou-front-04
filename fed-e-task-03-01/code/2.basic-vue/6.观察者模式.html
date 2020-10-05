@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>观察者模式</title>
+</head>
+
+<body>
+  <script>
+    // 忽略传参数
+    // 发布者 - 目标
+    class Dep {
+      constructor() {
+        this.data = [] // 订阅者
+      }
+      addData(singleData) {
+        if (!singleData || !singleData.update) {
+          return
+        }
+        this.data.push(singleData)
+      }
+      notify() {
+        this.data.forEach(handler => {
+          handler()
+        })
+      }
+    }
+    // 订阅者 - 观察者
+    class Watcher {
+      update() {
+        console.log('update')
+      }
+    }
+
+    let dep = new Dep()
+    let watcher = new Watcher()
+    dep.addData(watcher)
+    dep.notify()
+  </script>
+</body>
+
+</html>

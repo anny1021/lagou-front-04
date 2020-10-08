@@ -1,3 +1,7 @@
+### 笔记
+
+- [vue 的响应式原理](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-03-01/code/2.basic-vue/note.md)
+
 ### 简答题答案以及说明
 
 #### 当我们点击按钮的时候动态给 data 增加的成员是否是响应式数据，如果不是的话，如何把新增成员设置成响应式数据，它的内部原理是什么。
@@ -29,10 +33,10 @@ clickHandler () {
 
 #### 模拟 VueRouter 的 hash 模式的实现，实现思路和 History 模式类似，把 URL 中的 # 后面的内容作为路由的地址，可以通过 hashchange 事件监听路由地址的变化。
 
-- 代码路径 [VueRouter 的 hash 模式的实现](fed-e-task-03-01/code/1.self-vue-router)
+- 代码路径 [VueRouter 的 hash 模式的实现](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-03-01/code/1.self-vue-router)
 
 ### 在模拟 Vue.js 响应式源码的基础上实现 v-html 指令，以及 v-on 指令
-- 代码路径 [v-html 以及 v-on 指令](/Users/xinbinyan/Desktop/self-code/lagou-front-04/fed-e-task-03-01/code/3.mini-vue)
+- 代码路径 [v-html 以及 v-on 指令](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-03-01/code/3.mini-vue)
 
 ### 参考 Snabbdom 提供的电影列表的示例，利用Snabbdom 实现类似的效果，如图：
-- 代码路径 [Snabbdom demo](fed-e-task-03-01/code/4.Snabbdom/src/demo.js)
+- 代码路径 [Snabbdom demo](https://github.com/anny1021/lagou-front-04/blob/master/fed-e-task-03-01/code/4.Snabbdom)

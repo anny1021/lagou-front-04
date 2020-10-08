@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mini-vue</title>
+</head>
+
+<body>
+  <div id="app">
+    <h3>差值表达式</h3>
+    <p>{{msg}}</p>
+    <p>{{count}}</p>
+    <h3>v-text</h3>
+    <div v-text="msg"></div>
+    <h3>v-model</h3>
+    <label for="msg">msg</label><input type="text" v-model="msg">
+    <label for="count">count</label><input type="text" v-model="count">
+    <h3>v-html</h3>
+    <div v-html="<i>我是一个斜体</i>"></div>
+    <h3>v-on</h3>
+    <div v-on:click="()=>{console.log('hi^^^v-on:click')}">v-on:click</div>
+    <div @click="()=>{console.log('hi^^^@click')}">@click</div>
+  </div>
+  <script src="./js/dep.js"></script>
+  <script src="./js/watcher.js"></script>
+  <script src="./js/compiler.js"></script>
+  <script src="./js/observer.js"></script>
+  <script src="./js/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hi~',
+        count: 1,
+        person: {
+          name: 'zzz'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

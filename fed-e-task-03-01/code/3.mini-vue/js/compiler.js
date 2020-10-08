@@ -50,13 +50,23 @@ class Compiler {
         const currentAttrName = attrName.substr(2);
         const attrVal = attr.value;
         this.update(node, attrVal, currentAttrName);
+      } else if (this.isAliasDirective(attrName)) {
+        // 指令别名 @
+        this.update(node, attr.value, attrName);
       }
     });
   }
   // 处理指令的方法 - 根据指令的名称拼接
   update(node, key, attrName) {
-    const updateFn = this[`${attrName}Updater`];
-    this.vm[key] && updateFn && updateFn.call(this, node, this.vm[key], key);
+    const ignoreFn = attrName.indexOf(':') !== -1 || attrName.indexOf('@') !== -1;
+    if (!ignoreFn && attrName !== 'html') {
+      const updateFn = this[`${attrName}Updater`];
+      this.vm[key] && updateFn && updateFn.call(this, node, this.vm[key], key);
+    } else if (attrName === 'html') {
+      key && this.htmlUpdater.call(this, node, key);
+    } else {
+      this.eventUpdater(attrName, node, key);
+    }
   }
   // v-text 方法
   textUpdater(node, val, key) {
@@ -78,6 +88,42 @@ class Compiler {
       if (key && this.vm[key]) {
         this.vm[key] = node.value;
       }
+    });
+  }
+  // v-html方法
+  htmlUpdater(node, val) {
+    if (val) {
+      node.innerHTML = val;
+
+      new Watcher(this.vm, key, newValue => {
+        node.innerHTML = newValue;
+      });
+    }
+  }
+  // eventUpdater
+  eventUpdater(attrName, node, val) {
+    if (!val) {
+      return;
+    }
+    const fn = eval(val);
+    if (typeof fn !== 'function') {
+      return;
+    }
+    let eventName = '';
+    if (attrName.indexOf(':') !== -1) {
+      eventName = attrName.split(':');
+    } else if (attrName.indexOf('@') !== -1) {
+      eventName = attrName.split('@');
+    }
+    if (!eventName[1] || !['click'].includes(eventName[1])) {
+      return;
+    }
+    const eventType = eventName[1];
+    const executeFn = () => { fn(); };
+    node.addEventListener(eventType, executeFn);
+    new Watcher(this.vm, key, newValue => {
+      node.removeEventListener(eventType, fn);
+      node.addEventListener(eventType, executeFn);
     });
   }
   // 编译文本，处理差值表达式
@@ -102,6 +148,9 @@ class Compiler {
   // 是否是指令 v-
   isDirective(attrName) {
     return attrName.startsWith('v-');
+  }
+  isAliasDirective(attrName) {
+    return attrName.startsWith('@');
   }
   // 是否是文本 nodeType 3
   isTextNode(node) {

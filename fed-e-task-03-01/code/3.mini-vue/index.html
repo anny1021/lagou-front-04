@@ -17,6 +17,11 @@
     <h3>v-model</h3>
     <label for="msg">msg</label><input type="text" v-model="msg">
     <label for="count">count</label><input type="text" v-model="count">
+    <h3>v-html</h3>
+    <div v-html="<i>我是一个斜体</i>"></div>
+    <h3>v-on</h3>
+    <div v-on:click="()=>{console.log('hi^^^v-on:click')}">v-on:click</div>
+    <div @click="()=>{console.log('hi^^^@click')}">@click</div>
   </div>
   <script src="./js/dep.js"></script>
   <script src="./js/watcher.js"></script>

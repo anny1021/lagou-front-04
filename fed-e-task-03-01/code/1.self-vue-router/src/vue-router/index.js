@@ -6,19 +6,21 @@ export default class VueRouter {
     // options data routeMap
     this.options = options;
     this.routeMap = {};
+    this.mode = options.mode === 'hash' ? '/#' : '';
     this.data = _Vue.observable({
-      current: '/'
+      current: !this.mode ? '/' : '/#/'
     });
   }
   // init options.route for routeMap
   createdRouterMap() {
     // 遍历所有的路由规则，将路由规则解析为 键值对的方式
     this.options.routes.forEach(route => {
-      this.routeMap[route.path] = route.component;
+      this.routeMap[`${this.mode}${route.path}`] = route.component;
     });
   }
   // init component : router link &&  router view
   initComponents(Vue) {
+    const _this = this;
     // router link
     Vue.component('router-link', {
       props: {
@@ -30,7 +32,7 @@ export default class VueRouter {
           'a', // 1.选择器
           {
             attrs: { // 2.dom 的属性
-              href: this.to
+              href: `${_this.mode}${this.to}`
             },
             // 添加事件
             on: {
@@ -44,15 +46,14 @@ export default class VueRouter {
         // 客户端更改地址栏，不发送请求到 服务器
         clickHandler(e) {
           // 1. 改变地址栏
-          history.pushState({}, '', this.to);
+          history.pushState({}, '', `${_this.mode}${this.to}`);
           // 2. 更新 data.current 
-          this.$router.data.current = this.to;
+          this.$router.data.current = `${_this.mode}${this.to}`;
           e.preventDefault();
         }
       }
     });
     // router view
-    const _this = this;
     Vue.component('router-view', {
       render(h) {
         // 1. 当前路由的地址 路由地址对应的组件
